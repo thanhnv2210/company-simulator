@@ -27,6 +27,13 @@ export const api = {
       body: JSON.stringify({ decision_id: decisionId, option_id: optionId }),
     }),
 
+  // AI
+  explainDecision: (flowId, decisionId, optionId, beforeState) =>
+    request('/ai/explain', {
+      method: 'POST',
+      body: JSON.stringify({ flow_id: flowId, decision_id: decisionId, option_id: optionId, before_state: beforeState }),
+    }),
+
   // Scenarios
   listScenarios: () => request('/scenarios'),
   getScenario: (id) => request(`/scenarios/${id}`),

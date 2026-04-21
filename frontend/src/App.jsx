@@ -95,9 +95,8 @@ export default function App() {
               <DecisionPlayground
                 flowId={selectedFlowId}
                 isActive={isActive}
-                onStateChange={(newState) => {
-                  setFlowState(newState);
-                }}
+                currentState={flowState}
+                onStateChange={setFlowState}
               />
             )}
             {page === 'history' && (

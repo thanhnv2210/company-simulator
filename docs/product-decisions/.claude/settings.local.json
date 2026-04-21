@@ -10,7 +10,9 @@
       "Bash(pkill -f \"node src/index.js\")",
       "Bash(pkill -f \"vite\")",
       "Bash(curl -s http://localhost:5183)",
-      "Bash(curl -s http://localhost:3010/api/health)"
+      "Bash(curl -s http://localhost:3010/api/health)",
+      "Bash(curl -s http://localhost:11434/api/tags)",
+      "Bash(python3 -c \"import sys,json; [print\\(m[''''name'''']\\) for m in json.load\\(sys.stdin\\).get\\(''''models'''',[]\\)]\")"
     ]
   }
 }

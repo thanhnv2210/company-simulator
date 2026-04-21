@@ -30,34 +30,55 @@ function agreementLabel(score) {
   return 'Disagrees';
 }
 
-export default function DecisionPlayground({ flowId, isActive, onStateChange }) {
+export default function DecisionPlayground({ flowId, isActive, onStateChange, currentState }) {
   const decisions = getDecisions();
   const [selectedDecision, setSelectedDecision] = useState(decisions[0].id);
   const [result, setResult] = useState(null);
   const [applying, setApplying] = useState(false);
+  const [explanation, setExplanation] = useState(null);
+  const [explaining, setExplaining] = useState(false);
 
   const decision = decisions.find(d => d.id === selectedDecision);
 
   async function handleOption(optionId) {
     if (!isActive || applying) return;
     setApplying(true);
+    setExplanation(null);
     try {
       const option = decision.options.find(o => o.id === optionId);
       const agreement = {};
       Object.entries(option.role_impacts).forEach(([role, impacts]) => {
         agreement[role] = impacts.agreement ?? 50;
       });
+      const beforeState = currentState;
       const { state: newState } = await api.applyDecision(flowId, selectedDecision, optionId);
-      setResult({ optionId, agreement, optionLabel: option.label });
+      setResult({ optionId, agreement, optionLabel: option.label, beforeState, decisionId: selectedDecision });
       onStateChange(newState);
     } finally {
       setApplying(false);
     }
   }
 
+  async function handleExplain() {
+    if (!result || explaining) return;
+    setExplaining(true);
+    setExplanation(null);
+    try {
+      const { explanation: text } = await api.explainDecision(
+        flowId, result.decisionId, result.optionId, result.beforeState
+      );
+      setExplanation(text);
+    } catch (err) {
+      setExplanation(`Could not generate explanation: ${err.message}`);
+    } finally {
+      setExplaining(false);
+    }
+  }
+
   function handleSelectDecision(id) {
     setSelectedDecision(id);
     setResult(null);
+    setExplanation(null);
   }
 
   return (
@@ -135,9 +156,32 @@ export default function DecisionPlayground({ flowId, isActive, onStateChange }) 
               </div>
             ))}
           </div>
-          <p style={{ marginTop: 16, fontSize: 12, color: '#475569' }}>
-            Metric changes have been applied. Check the Dashboard to see the updated state.
-          </p>
+          {/* AI Explainer */}
+          <div style={{ marginTop: 20, borderTop: '1px solid #1e293b', paddingTop: 20 }}>
+            {!explanation && (
+              <button
+                onClick={handleExplain}
+                disabled={explaining}
+                style={{
+                  padding: '8px 20px', borderRadius: 8, border: '1px solid #334155',
+                  background: '#1e293b', color: explaining ? '#475569' : '#a78bfa',
+                  cursor: explaining ? 'not-allowed' : 'pointer', fontSize: 13, fontWeight: 600,
+                }}
+              >
+                {explaining ? '✦ Analysing...' : '✦ Explain this decision (AI)'}
+              </button>
+            )}
+            {explanation && (
+              <div style={{ background: '#1e293b', borderRadius: 10, padding: 20, borderLeft: '3px solid #a78bfa' }}>
+                <div style={{ fontSize: 12, color: '#a78bfa', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 10 }}>
+                  ✦ AI Analysis
+                </div>
+                <p style={{ color: '#cbd5e1', fontSize: 14, lineHeight: 1.8, margin: 0, whiteSpace: 'pre-wrap' }}>
+                  {explanation}
+                </p>
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>
