@@ -101,3 +101,16 @@ npm run dev
 
 - Frontend: http://localhost:5183
 - Backend API: http://localhost:3010
+
+## 🛑 Stop Services
+
+```bash
+# stop frontend (find and kill the Vite dev server on port 5183)
+lsof -ti :5183 | xargs kill -9
+
+# stop backend (find and kill the Node.js server on port 3010)
+lsof -ti :3010 | xargs kill -9
+
+# stop PostgreSQL (if running via Docker)
+docker stop <postgres-container-name>
+```
