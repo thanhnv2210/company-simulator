@@ -6,23 +6,30 @@
     "budget": 100000
   },
   "metrics": {
-    "execution": {
-      "velocity": 50,
-      "deployment_frequency": 40
-    },
-    "quality": {
-      "bug_rate": 30,
-      "system_stability": 60,
-      "tech_debt": 50
-    },
-    "business": {
-      "revenue": 20,
+    "ceo": {
+      "revenue_growth": 20,
       "burn_rate": 30,
-      "customer_satisfaction": 50
+      "team_size": 10
     },
-    "team": {
-      "morale": 60,
-      "coordination_cost": 30
+    "cto": {
+      "system_stability": 60,
+      "deployment_frequency": 40,
+      "tech_debt_level": 50
+    },
+    "engineer": {
+      "velocity": 50,
+      "code_quality": 60,
+      "bug_rate": 30
+    },
+    "pm": {
+      "feature_adoption": 40,
+      "delivery_time": 50,
+      "user_satisfaction": 50
+    },
+    "sales": {
+      "monthly_revenue": 20,
+      "conversion_rate": 30,
+      "pipeline_size": 25
     }
   },
   "history": [],

@@ -3,17 +3,17 @@
 ## Phase 1: Foundation
 
 ### Core Setup
-- [ ] Initialize repo
-- [ ] Setup frontend (React)
-- [ ] Setup backend (Spring Boot / Node)
+- [x] Initialize repo
+- [x] Define JSON config files (roles, decisions, workflows, state)
+- [ ] Setup frontend (React + Vite)
 
 ---
 
 ### Data Modeling
-- [ ] Define Company schema
-- [ ] Define Role schema
-- [ ] Define Workflow schema
-- [ ] Define Decision schema
+- [x] Define Company schema (`config/stateSchema.json`)
+- [x] Define Role schema (`config/roles.json`)
+- [x] Define Workflow schema (`config/workflows.json`)
+- [x] Define Decision schema (`config/decisions.json`)
 
 ---
 

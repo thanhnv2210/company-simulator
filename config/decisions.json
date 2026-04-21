@@ -8,21 +8,57 @@
         {
           "id": "yes",
           "label": "Hire",
-          "impacts": {
-            "velocity": 15,
-            "burn_rate": 10,
-            "coordination_cost": 5,
-            "morale": 5
+          "role_impacts": {
+            "ceo": {
+              "agreement": 60,
+              "burn_rate": 10,
+              "team_size": 1
+            },
+            "cto": {
+              "agreement": 90,
+              "tech_debt_level": -5,
+              "system_stability": 5
+            },
+            "engineer": {
+              "agreement": 85,
+              "velocity": 15,
+              "code_quality": 5
+            },
+            "pm": {
+              "agreement": 70,
+              "delivery_time": -10,
+              "feature_adoption": 5
+            },
+            "sales": {
+              "agreement": 35,
+              "burn_rate": 10
+            }
           }
         },
         {
           "id": "no",
           "label": "Do not hire",
-          "impacts": {
-            "velocity": -5,
-            "burn_rate": 0,
-            "coordination_cost": 0,
-            "morale": -3
+          "role_impacts": {
+            "ceo": {
+              "agreement": 70,
+              "burn_rate": 0
+            },
+            "cto": {
+              "agreement": 40,
+              "tech_debt_level": 5
+            },
+            "engineer": {
+              "agreement": 20,
+              "velocity": -5,
+              "code_quality": -5
+            },
+            "pm": {
+              "agreement": 45,
+              "delivery_time": 10
+            },
+            "sales": {
+              "agreement": 65
+            }
           }
         }
       ]
@@ -35,19 +71,60 @@
         {
           "id": "feature",
           "label": "Build New Feature",
-          "impacts": {
-            "feature_output": 10,
-            "bug_rate": 5,
-            "user_satisfaction": 3
+          "role_impacts": {
+            "ceo": {
+              "agreement": 75,
+              "revenue_growth": 5
+            },
+            "cto": {
+              "agreement": 35,
+              "tech_debt_level": 10,
+              "system_stability": -5
+            },
+            "engineer": {
+              "agreement": 50,
+              "velocity": 5,
+              "bug_rate": 10
+            },
+            "pm": {
+              "agreement": 85,
+              "feature_adoption": 10,
+              "user_satisfaction": 3
+            },
+            "sales": {
+              "agreement": 90,
+              "pipeline_size": 10,
+              "monthly_revenue": 5
+            }
           }
         },
         {
           "id": "bugfix",
           "label": "Fix Bugs",
-          "impacts": {
-            "feature_output": -5,
-            "bug_rate": -10,
-            "user_satisfaction": 8
+          "role_impacts": {
+            "ceo": {
+              "agreement": 50,
+              "revenue_growth": -5
+            },
+            "cto": {
+              "agreement": 90,
+              "tech_debt_level": -10,
+              "system_stability": 10
+            },
+            "engineer": {
+              "agreement": 80,
+              "code_quality": 10,
+              "bug_rate": -15
+            },
+            "pm": {
+              "agreement": 60,
+              "user_satisfaction": 8,
+              "delivery_time": 5
+            },
+            "sales": {
+              "agreement": 30,
+              "pipeline_size": -5
+            }
           }
         }
       ]
@@ -60,19 +137,54 @@
         {
           "id": "yes",
           "label": "Hire",
-          "impacts": {
-            "revenue": 20,
-            "burn_rate": 8,
-            "pipeline": 15
+          "role_impacts": {
+            "ceo": {
+              "agreement": 85,
+              "revenue_growth": 15,
+              "burn_rate": 8
+            },
+            "cto": {
+              "agreement": 40,
+              "burn_rate": 8
+            },
+            "engineer": {
+              "agreement": 45
+            },
+            "pm": {
+              "agreement": 65,
+              "user_satisfaction": 5
+            },
+            "sales": {
+              "agreement": 95,
+              "monthly_revenue": 20,
+              "pipeline_size": 15,
+              "conversion_rate": 10
+            }
           }
         },
         {
           "id": "no",
           "label": "Do not hire",
-          "impacts": {
-            "revenue": 5,
-            "burn_rate": 0,
-            "pipeline": 3
+          "role_impacts": {
+            "ceo": {
+              "agreement": 40,
+              "revenue_growth": -10
+            },
+            "cto": {
+              "agreement": 70,
+              "burn_rate": 0
+            },
+            "engineer": {
+              "agreement": 65
+            },
+            "pm": {
+              "agreement": 50
+            },
+            "sales": {
+              "agreement": 10,
+              "monthly_revenue": 5,
+              "pipeline_size": 3
+            }
           }
         }
       ]
@@ -85,19 +197,56 @@
         {
           "id": "invest",
           "label": "Invest in Tech Debt",
-          "impacts": {
-            "tech_debt": -15,
-            "velocity": -5,
-            "stability": 10
+          "role_impacts": {
+            "ceo": {
+              "agreement": 35,
+              "revenue_growth": -5
+            },
+            "cto": {
+              "agreement": 95,
+              "tech_debt_level": -15,
+              "system_stability": 10
+            },
+            "engineer": {
+              "agreement": 90,
+              "code_quality": 15,
+              "velocity": -5
+            },
+            "pm": {
+              "agreement": 40,
+              "delivery_time": 10
+            },
+            "sales": {
+              "agreement": 20,
+              "pipeline_size": -5
+            }
           }
         },
         {
           "id": "ignore",
           "label": "Ignore",
-          "impacts": {
-            "tech_debt": 10,
-            "velocity": 5,
-            "stability": -10
+          "role_impacts": {
+            "ceo": {
+              "agreement": 70,
+              "revenue_growth": 5
+            },
+            "cto": {
+              "agreement": 15,
+              "tech_debt_level": 15,
+              "system_stability": -10
+            },
+            "engineer": {
+              "agreement": 20,
+              "code_quality": -10,
+              "velocity": 5
+            },
+            "pm": {
+              "agreement": 65,
+              "delivery_time": -5
+            },
+            "sales": {
+              "agreement": 80
+            }
           }
         }
       ]
@@ -110,19 +259,60 @@
         {
           "id": "fast",
           "label": "Release Fast",
-          "impacts": {
-            "deployment_frequency": 15,
-            "bug_rate": 10,
-            "user_satisfaction": -5
+          "role_impacts": {
+            "ceo": {
+              "agreement": 80,
+              "revenue_growth": 5
+            },
+            "cto": {
+              "agreement": 30,
+              "system_stability": -10,
+              "tech_debt_level": 5
+            },
+            "engineer": {
+              "agreement": 45,
+              "bug_rate": 15,
+              "deployment_frequency": 15
+            },
+            "pm": {
+              "agreement": 55,
+              "user_satisfaction": -5,
+              "feature_adoption": 5
+            },
+            "sales": {
+              "agreement": 85,
+              "pipeline_size": 10,
+              "monthly_revenue": 5
+            }
           }
         },
         {
           "id": "stable",
           "label": "Release Carefully",
-          "impacts": {
-            "deployment_frequency": -5,
-            "bug_rate": -10,
-            "user_satisfaction": 10
+          "role_impacts": {
+            "ceo": {
+              "agreement": 50,
+              "revenue_growth": -5
+            },
+            "cto": {
+              "agreement": 90,
+              "system_stability": 10,
+              "tech_debt_level": -5
+            },
+            "engineer": {
+              "agreement": 80,
+              "bug_rate": -15,
+              "code_quality": 10
+            },
+            "pm": {
+              "agreement": 75,
+              "user_satisfaction": 10,
+              "delivery_time": 10
+            },
+            "sales": {
+              "agreement": 40,
+              "pipeline_size": -5
+            }
           }
         }
       ]

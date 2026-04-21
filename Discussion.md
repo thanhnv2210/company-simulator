@@ -25,6 +25,8 @@ Not a simulator, but:
 - How to measure decision quality?
 - When to introduce AI?
 
+See [Pending Decisions](./docs/PendingDecisions.md) for deferred technical decisions awaiting implementation context.
+
 ---
 
 ## 5. Future Ideas

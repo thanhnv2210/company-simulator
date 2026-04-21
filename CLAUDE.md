@@ -49,3 +49,4 @@ User → Select Role/Decision → Load JSON config → Apply rules → Return up
 - `Todo.md` — task backlog
 - `docs/architecture-decisions/` — ADRs
 - `docs/product-decisions/` — PDRs
+- `docs/PendingDecisions.md` — deferred technical decisions, resolve when implementation requires them
