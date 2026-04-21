@@ -6,6 +6,7 @@ import RoleExplorer from './pages/RoleExplorer.jsx';
 import WorkflowVisualizer from './pages/WorkflowVisualizer.jsx';
 import DecisionPlayground from './pages/DecisionPlayground.jsx';
 import DecisionHistory from './pages/DecisionHistory.jsx';
+import ScenarioPlayer from './pages/ScenarioPlayer.jsx';
 import { api } from './api/client.js';
 
 export default function App() {
@@ -101,6 +102,9 @@ export default function App() {
             )}
             {page === 'history' && (
               <DecisionHistory flowId={selectedFlowId} />
+            )}
+            {page === 'scenarios' && (
+              <ScenarioPlayer onFlowCreated={(flow) => loadFlows(flow.id)} />
             )}
           </>
         )}

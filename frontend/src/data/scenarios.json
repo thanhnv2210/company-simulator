@@ -1,0 +1,148 @@
+{
+  "scenarios": [
+    {
+      "id": "disciplined_builder",
+      "title": "The Disciplined Builder",
+      "outcome": "positive",
+      "description": "A startup that prioritises stability, quality, and timing over raw speed. Every decision compounds trust — and trust becomes the moat.",
+      "steps": [
+        {
+          "quarter": "Year 1 — Q1",
+          "decision_id": "build_feature_vs_fix_bug",
+          "option_id": "bugfix",
+          "title": "Fix Bugs First",
+          "context": "The team resists investor pressure to ship new features and spends the quarter on stability.",
+          "market_impact": "Early adopters stop churning. Word-of-mouth begins. Trust is the moat at this stage — one bad review can kill a SaaS in a niche market."
+        },
+        {
+          "quarter": "Year 1 — Q2",
+          "decision_id": "hire_engineer",
+          "option_id": "yes",
+          "title": "Hire 1 Engineer",
+          "context": "Velocity is stable, morale is high, and the team can absorb a new hire without chaos.",
+          "market_impact": "Feature delivery accelerates. Competitors are shipping faster but the product's quality reputation starts differentiating it in the market."
+        },
+        {
+          "quarter": "Year 1 — Q3",
+          "decision_id": "release_speed",
+          "option_id": "stable",
+          "title": "Release Carefully",
+          "context": "Despite pressure to move fast, the team maintains quality gates before each release.",
+          "market_impact": "First enterprise prospect appears. Enterprise buyers do due diligence — system stability is a hard requirement. A single outage here loses a 6-month deal."
+        },
+        {
+          "quarter": "Year 1 — Q4",
+          "decision_id": "hire_sales",
+          "option_id": "yes",
+          "title": "Hire Sales",
+          "context": "Product is stable enough to confidently sell. The team finally has something worth putting in front of buyers.",
+          "market_impact": "MRR grows 3x in 90 days. The market was waiting — the bottleneck was never the product, it was distribution."
+        },
+        {
+          "quarter": "Year 2 — Q1",
+          "decision_id": "technical_debt",
+          "option_id": "invest",
+          "title": "Invest in Tech Debt",
+          "context": "Before scaling further, the team cleans the foundation to handle the load of growth ahead.",
+          "market_impact": "No visible user impact now, but engineering velocity jumps the following quarter. Investors notice deployment frequency as a proxy for team health."
+        },
+        {
+          "quarter": "Year 2 — Q2",
+          "decision_id": "build_feature_vs_fix_bug",
+          "option_id": "feature",
+          "title": "Build New Feature",
+          "context": "On a solid, clean base, the team ships a high-demand feature quickly and confidently.",
+          "market_impact": "Feature goes viral in the niche community. Competitor users start migrating. This is the compounding return of doing the boring work in Q1."
+        },
+        {
+          "quarter": "Year 2 — Q3",
+          "decision_id": "hire_sales",
+          "option_id": "yes",
+          "title": "Hire Sales Again",
+          "context": "Growing revenue justifies expanding the sales team to capture the expanding pipeline.",
+          "market_impact": "Pipeline doubles. The company enters Series A conversations. Revenue growth is now predictable — the best signal for institutional investors."
+        },
+        {
+          "quarter": "Year 2 — Q4",
+          "decision_id": "release_speed",
+          "option_id": "fast",
+          "title": "Release Fast",
+          "context": "With a larger, stable team and clean codebase, shipping speed is now sustainable without sacrificing quality.",
+          "market_impact": "Shipping velocity becomes a brand identity. 'They ship fast and it works' is the reputation. Series A closes."
+        }
+      ]
+    },
+    {
+      "id": "growth_at_all_costs",
+      "title": "Growth at All Costs",
+      "outcome": "negative",
+      "description": "A startup that chases metrics over fundamentals. Every shortcut feels like speed — until the compounding debt calls in all at once.",
+      "steps": [
+        {
+          "quarter": "Year 1 — Q1",
+          "decision_id": "build_feature_vs_fix_bug",
+          "option_id": "feature",
+          "title": "Ship Features, Fix Later",
+          "context": "Pressure from investors to show growth. The team skips bug triage and pushes the next feature.",
+          "market_impact": "Launch gets attention. But 20% of new signups hit the same 3 bugs and churn within 2 weeks. Customer acquisition cost is being thrown away."
+        },
+        {
+          "quarter": "Year 1 — Q2",
+          "decision_id": "release_speed",
+          "option_id": "fast",
+          "title": "Release Fast",
+          "context": "Double down on shipping speed. Daily deploys with no quality gates.",
+          "market_impact": "Bug rate compounds. A production incident takes the product down for 4 hours. The first negative review appears and will rank on Google for years."
+        },
+        {
+          "quarter": "Year 1 — Q3",
+          "decision_id": "hire_sales",
+          "option_id": "yes",
+          "title": "Hire Sales Too Early",
+          "context": "Try to sell an unstable product. Sales reps are promising features that don't reliably work.",
+          "market_impact": "High pipeline, very low close rate. Churn from closed deals is 60% within 90 days — poisoning the reference pool and destroying future word-of-mouth."
+        },
+        {
+          "quarter": "Year 1 — Q4",
+          "decision_id": "technical_debt",
+          "option_id": "ignore",
+          "title": "Ignore Tech Debt",
+          "context": "Sprint to hit end-of-year metrics. Leadership defers the debt conversation to January.",
+          "market_impact": "Burn rate is high. MRR is not growing proportionally. Runway drops below 9 months. Investors ask hard questions at the board meeting."
+        },
+        {
+          "quarter": "Year 2 — Q1",
+          "decision_id": "build_feature_vs_fix_bug",
+          "option_id": "feature",
+          "title": "Another New Feature",
+          "context": "Instead of addressing stability, the team bets on a new feature to re-spark growth.",
+          "market_impact": "Feature ships with new bugs on a broken foundation. The core user base — who stayed despite problems — starts leaving. This is the tipping point."
+        },
+        {
+          "quarter": "Year 2 — Q2",
+          "decision_id": "hire_engineer",
+          "option_id": "yes",
+          "title": "Panic Hire an Engineer",
+          "context": "Emergency hire to tackle the mounting bug backlog, but the timing is reactive not strategic.",
+          "market_impact": "Coordination cost spikes. New engineer spends 6 weeks understanding the codebase. Velocity drops before it rises. Existing team morale collapses."
+        },
+        {
+          "quarter": "Year 2 — Q3",
+          "decision_id": "technical_debt",
+          "option_id": "invest",
+          "title": "Invest in Tech Debt (Too Late)",
+          "context": "Finally forced to address stability, but the team's velocity stalls completely for weeks.",
+          "market_impact": "Nothing ships for 8 weeks. A competitor fills the gap. The sales pipeline goes cold. An enterprise prospect walks away after waiting too long."
+        },
+        {
+          "quarter": "Year 2 — Q4",
+          "decision_id": "release_speed",
+          "option_id": "fast",
+          "title": "Desperate Push to Ship",
+          "context": "With runway nearly exhausted, the team pushes releases to show investor activity.",
+          "market_impact": "Burn rate never recovered. Bridge round fails. The product had real value — the market wanted it — but operational decisions burned the runway before product-market fit could compound."
+        }
+      ]
+    }
+  ]
+}

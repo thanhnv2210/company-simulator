@@ -60,6 +60,7 @@
 ### Pending
 - [ ] Add more decision scenarios (in backlog)
 - [x] Decision history log / timeline view (`frontend/src/pages/DecisionHistory.jsx`)
+- [x] Guided scenario walkthroughs — 2-year positive & negative cases (`config/scenarios.json`, `backend/src/routes/scenarios.js`, `frontend/src/pages/ScenarioPlayer.jsx`)
 
 ---
 

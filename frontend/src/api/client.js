@@ -26,4 +26,14 @@ export const api = {
       method: 'POST',
       body: JSON.stringify({ decision_id: decisionId, option_id: optionId }),
     }),
+
+  // Scenarios
+  listScenarios: () => request('/scenarios'),
+  getScenario: (id) => request(`/scenarios/${id}`),
+  startScenario: (id) => request(`/scenarios/${id}/start`, { method: 'POST' }),
+  applyScenarioStep: (id, flowId, stepIndex) =>
+    request(`/scenarios/${id}/step`, {
+      method: 'POST',
+      body: JSON.stringify({ flow_id: flowId, step_index: stepIndex }),
+    }),
 };
