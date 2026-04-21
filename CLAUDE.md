@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Current State
 
-**Phase 2 is in progress.** Backend API is live, flows are persisted to PostgreSQL.
+**Phase 2 is complete.** Backend API is live, flows persist to PostgreSQL, scenarios and history are fully implemented.
 
 - `config/` — JSON source of truth for all domain data
 - `frontend/` — React + Vite app → `cd frontend && npm run dev` (port 5183)
@@ -30,31 +30,37 @@ All domain data (roles, workflows, decisions) lives in JSON config files — no 
 ### Data Flow
 ```
 User Action (UI)
-→ engine.applyDecision(decisionId, optionId)
-→ look up role_impacts in decisions.json
-→ apply deltas to in-memory state (metrics clamped 0–100)
-→ append to state.history
-→ React re-renders Dashboard with new state
+→ api.applyDecision(flowId, decisionId, optionId)   [or scenario step]
+→ backend looks up role_impacts in decisions.json
+→ applies deltas to flow.state in PostgreSQL (metrics clamped 0–100)
+→ persists to flow_decisions with quarter-aware timestamp
+→ returns new state → React re-renders Dashboard
 ```
 
-### Key files
-- `backend/src/routes/flows.js` — all API endpoints, decision logic, state mutation
-- `backend/src/db/migrate.js` — creates `flows` and `flow_decisions` tables
-- `frontend/src/api/client.js` — all API calls (listFlows, applyDecision, resetFlow, etc.)
-- `frontend/src/components/FlowSelector.jsx` — active/inactive flow switcher + reset button
-- `frontend/src/state/engine.js` — `getDecisions()` still used for local decision list; state is now owned by backend
-- `frontend/src/pages/DecisionPlayground.jsx` — calls API, disabled in view-only mode
-- `frontend/src/pages/Dashboard.jsx` — renders flow state from API
+### Scenario timestamp logic
+Each scenario step maps to a calendar quarter. `stepTimestamp(flow.created_at, stepIndex)` adds `stepIndex × 3 months` so the history timeline reads as a real 2-year journey (Q1 Year 1 → Q4 Year 2).
 
-### Tech Stack (ADR-002)
-- **Frontend**: React + Vite
-- **State**: In-memory state engine (no backend for MVP)
-- **Data**: JSON config files in `config/`
-- **Backend**: Optional, introduced in Phase 2
+### Key files
+- `backend/src/routes/flows.js` — flow CRUD and free-play decision endpoints
+- `backend/src/routes/scenarios.js` — scenario list, start, and step-apply with quarter timestamps
+- `backend/src/db/migrate.js` — creates `flows` and `flow_decisions` tables
+- `config/scenarios.json` — source of truth for all 4 scenarios (copy to `backend/src/data/` and `frontend/src/data/` when updated)
+- `frontend/src/api/client.js` — all API calls
+- `frontend/src/components/FlowSelector.jsx` — active/inactive flow switcher + reset button
+- `frontend/src/pages/ScenarioPlayer.jsx` — step-by-step guided walkthrough with market impact text
+- `frontend/src/pages/DecisionHistory.jsx` — expandable timeline of all decisions in a flow
+- `frontend/src/pages/DecisionPlayground.jsx` — free-play decisions, disabled in view-only mode
+- `frontend/src/state/engine.js` — `getDecisions()` still used for local decision list; state is owned by backend
+
+### Tech Stack
+- **Frontend**: React + Vite (port 5183)
+- **Backend**: Node.js + Express (port 3010)
+- **Database**: PostgreSQL (port 54320, db `company_simulator`)
+- **Data**: JSON config files in `config/` — source of truth, copied to `backend/src/data/` and `frontend/src/data/`
 
 ### Development Phases
-1. **Phase 1 (MVP)**: Non-AI, frontend-only — React + Vite, JSON-driven, in-memory state
-2. **Phase 2**: State persistence, backend introduced, expanded decision scenarios
+1. **Phase 1 ✅**: Non-AI, frontend-only — React + Vite, JSON-driven, in-memory state, all 4 core views
+2. **Phase 2 ✅**: Node.js backend, PostgreSQL persistence, flow management, decision history, 4 guided scenarios
 3. **Phase 3**: AI-powered decision assistant, role simulation ("Act as CTO"), personalized recommendations
 
 ## Key Constraints (PDR-001)

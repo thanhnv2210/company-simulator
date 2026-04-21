@@ -57,10 +57,14 @@
 - [x] Decision Playground — disabled in view-only mode for inactive flows
 - [x] App.jsx — loads flows from API on mount, orchestrates flow state
 
+### Scenarios & History
+- [x] Decision history log / timeline view (`frontend/src/pages/DecisionHistory.jsx`)
+- [x] Guided scenario walkthroughs — `config/scenarios.json`, `backend/src/routes/scenarios.js`, `frontend/src/pages/ScenarioPlayer.jsx`
+- [x] 4 scenarios: The Disciplined Builder, Growth at All Costs, The Responsible AI Builder, The AI Hype Machine
+- [x] Scenario step timestamps mapped to quarterly timeline (step × 3 months from flow start)
+
 ### Pending
 - [ ] Add more decision scenarios (in backlog)
-- [x] Decision history log / timeline view (`frontend/src/pages/DecisionHistory.jsx`)
-- [x] Guided scenario walkthroughs — 2-year positive & negative cases (`config/scenarios.json`, `backend/src/routes/scenarios.js`, `frontend/src/pages/ScenarioPlayer.jsx`)
 
 ---
 
