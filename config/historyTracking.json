@@ -1,0 +1,13 @@
+{
+  "history": [
+    {
+      "decision_id": "hire_engineer",
+      "option_id": "yes",
+      "timestamp": "2026-01-02T10:00:00Z",
+      "impact": {
+        "velocity": 15,
+        "burn_rate": 10
+      }
+    }
+  ]
+}

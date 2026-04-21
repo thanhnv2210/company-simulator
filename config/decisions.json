@@ -1,0 +1,131 @@
+{
+  "decisions": [
+    {
+      "id": "hire_engineer",
+      "title": "Hire 1 Engineer",
+      "description": "Increase engineering capacity",
+      "options": [
+        {
+          "id": "yes",
+          "label": "Hire",
+          "impacts": {
+            "velocity": 15,
+            "burn_rate": 10,
+            "coordination_cost": 5,
+            "morale": 5
+          }
+        },
+        {
+          "id": "no",
+          "label": "Do not hire",
+          "impacts": {
+            "velocity": -5,
+            "burn_rate": 0,
+            "coordination_cost": 0,
+            "morale": -3
+          }
+        }
+      ]
+    },
+    {
+      "id": "build_feature_vs_fix_bug",
+      "title": "Build Feature vs Fix Bugs",
+      "description": "Choose between new features or improving stability",
+      "options": [
+        {
+          "id": "feature",
+          "label": "Build New Feature",
+          "impacts": {
+            "feature_output": 10,
+            "bug_rate": 5,
+            "user_satisfaction": 3
+          }
+        },
+        {
+          "id": "bugfix",
+          "label": "Fix Bugs",
+          "impacts": {
+            "feature_output": -5,
+            "bug_rate": -10,
+            "user_satisfaction": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": "hire_sales",
+      "title": "Hire Sales Person",
+      "description": "Boost revenue generation",
+      "options": [
+        {
+          "id": "yes",
+          "label": "Hire",
+          "impacts": {
+            "revenue": 20,
+            "burn_rate": 8,
+            "pipeline": 15
+          }
+        },
+        {
+          "id": "no",
+          "label": "Do not hire",
+          "impacts": {
+            "revenue": 5,
+            "burn_rate": 0,
+            "pipeline": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "technical_debt",
+      "title": "Reduce Technical Debt",
+      "description": "Invest time in improving codebase",
+      "options": [
+        {
+          "id": "invest",
+          "label": "Invest in Tech Debt",
+          "impacts": {
+            "tech_debt": -15,
+            "velocity": -5,
+            "stability": 10
+          }
+        },
+        {
+          "id": "ignore",
+          "label": "Ignore",
+          "impacts": {
+            "tech_debt": 10,
+            "velocity": 5,
+            "stability": -10
+          }
+        }
+      ]
+    },
+    {
+      "id": "release_speed",
+      "title": "Release Strategy",
+      "description": "Choose between speed and stability",
+      "options": [
+        {
+          "id": "fast",
+          "label": "Release Fast",
+          "impacts": {
+            "deployment_frequency": 15,
+            "bug_rate": 10,
+            "user_satisfaction": -5
+          }
+        },
+        {
+          "id": "stable",
+          "label": "Release Carefully",
+          "impacts": {
+            "deployment_frequency": -5,
+            "bug_rate": -10,
+            "user_satisfaction": 10
+          }
+        }
+      ]
+    }
+  ]
+}

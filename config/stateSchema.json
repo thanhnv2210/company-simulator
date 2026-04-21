@@ -1,0 +1,30 @@
+{
+  "company": {
+    "name": "DevTool SaaS",
+    "size": 10,
+    "stage": "early",
+    "budget": 100000
+  },
+  "metrics": {
+    "execution": {
+      "velocity": 50,
+      "deployment_frequency": 40
+    },
+    "quality": {
+      "bug_rate": 30,
+      "system_stability": 60,
+      "tech_debt": 50
+    },
+    "business": {
+      "revenue": 20,
+      "burn_rate": 30,
+      "customer_satisfaction": 50
+    },
+    "team": {
+      "morale": 60,
+      "coordination_cost": 30
+    }
+  },
+  "history": [],
+  "timestamp": "2026-01-01T00:00:00Z"
+}
