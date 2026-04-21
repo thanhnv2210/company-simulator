@@ -5,7 +5,8 @@
 ### Core Setup
 - [x] Initialize repo
 - [x] Define JSON config files (roles, decisions, workflows, state)
-- [ ] Setup frontend (React + Vite)
+- [x] Setup frontend (React + Vite) — `frontend/`
+- [x] Build state engine (`frontend/src/state/engine.js`)
 
 ---
 
@@ -20,20 +21,21 @@
 ### Features
 
 #### Company Dashboard
-- [ ] Display team structure
-- [ ] Show simple metrics
+- [x] Display role metric cards
+- [x] Show live metrics with progress bars
 
 #### Role Explorer
-- [ ] List roles
-- [ ] Show responsibilities
+- [x] List all roles with tab selector
+- [x] Show responsibilities, daily activities, KPIs per role
 
 #### Workflow Visualizer
-- [ ] Render lifecycle steps
-- [ ] Map roles to steps
+- [x] Render lifecycle steps with icons
+- [x] Map roles to steps with color badges
 
 #### Decision Playground
-- [ ] Implement 5 decisions
-- [ ] Show impact results
+- [x] Implement all 5 decisions
+- [x] Show per-role agreement scores after each decision
+- [x] Apply impacts to live dashboard state
 
 ---
 

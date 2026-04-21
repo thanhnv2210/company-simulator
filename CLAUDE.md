@@ -8,7 +8,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Current State
 
-This repository is in the **planning/design phase**. No implementation exists yet — only documentation, architectural decisions, and JSON config files in `config/`.
+**Phase 1 (MVP) is complete.** The frontend is fully built and running.
+
+- `config/` — JSON source of truth for all domain data
+- `frontend/` — React + Vite app, runnable with `cd frontend && npm run dev`
+- All 4 core features are implemented: Dashboard, Role Explorer, Workflow Visualizer, Decision Playground
+- State engine lives in `frontend/src/state/engine.js` — pure JS, no backend
 
 ## Architecture
 
@@ -23,8 +28,19 @@ All domain data (roles, workflows, decisions) lives in JSON config files — no 
 
 ### Data Flow
 ```
-User → Select Role/Decision → Load JSON config → Apply rules → Return updated state
+User Action (UI)
+→ engine.applyDecision(decisionId, optionId)
+→ look up role_impacts in decisions.json
+→ apply deltas to in-memory state (metrics clamped 0–100)
+→ append to state.history
+→ React re-renders Dashboard with new state
 ```
+
+### Key files
+- `frontend/src/state/engine.js` — `getState()`, `applyDecision()`, `getRoleAgreement()`, `resetState()`
+- `frontend/src/data/` — runtime copies of JSON configs (source of truth: `config/`)
+- `frontend/src/pages/DecisionPlayground.jsx` — calls engine, passes new state up to App
+- `frontend/src/pages/Dashboard.jsx` — reads state and renders role metric cards
 
 ### Tech Stack (ADR-002)
 - **Frontend**: React + Vite

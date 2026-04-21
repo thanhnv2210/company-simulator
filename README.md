@@ -99,8 +99,10 @@ It’s a **thinking framework** for engineers who want to:
 # clone repo
 git clone <repo-url>
 
-# install dependencies
-# (to be defined)
+# install and run
+cd frontend
+npm install
+npm run dev
+```
 
-# run app
-# (to be defined)
+Open http://localhost:5173
