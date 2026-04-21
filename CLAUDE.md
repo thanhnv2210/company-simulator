@@ -8,12 +8,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Current State
 
-**Phase 1 (MVP) is complete.** The frontend is fully built and running.
+**Phase 2 is in progress.** Backend API is live, flows are persisted to PostgreSQL.
 
 - `config/` — JSON source of truth for all domain data
-- `frontend/` — React + Vite app, runnable with `cd frontend && npm run dev`
-- All 4 core features are implemented: Dashboard, Role Explorer, Workflow Visualizer, Decision Playground
-- State engine lives in `frontend/src/state/engine.js` — pure JS, no backend
+- `frontend/` — React + Vite app → `cd frontend && npm run dev` (port 5173)
+- `backend/` — Node.js + Express API → `cd backend && npm start` (port 3001)
+- Database: PostgreSQL at `localhost:54320`, database `company_simulator`
+- To set up DB from scratch: `cd backend && npm run migrate`
 
 ## Architecture
 
@@ -37,10 +38,13 @@ User Action (UI)
 ```
 
 ### Key files
-- `frontend/src/state/engine.js` — `getState()`, `applyDecision()`, `getRoleAgreement()`, `resetState()`
-- `frontend/src/data/` — runtime copies of JSON configs (source of truth: `config/`)
-- `frontend/src/pages/DecisionPlayground.jsx` — calls engine, passes new state up to App
-- `frontend/src/pages/Dashboard.jsx` — reads state and renders role metric cards
+- `backend/src/routes/flows.js` — all API endpoints, decision logic, state mutation
+- `backend/src/db/migrate.js` — creates `flows` and `flow_decisions` tables
+- `frontend/src/api/client.js` — all API calls (listFlows, applyDecision, resetFlow, etc.)
+- `frontend/src/components/FlowSelector.jsx` — active/inactive flow switcher + reset button
+- `frontend/src/state/engine.js` — `getDecisions()` still used for local decision list; state is now owned by backend
+- `frontend/src/pages/DecisionPlayground.jsx` — calls API, disabled in view-only mode
+- `frontend/src/pages/Dashboard.jsx` — renders flow state from API
 
 ### Tech Stack (ADR-002)
 - **Frontend**: React + Vite

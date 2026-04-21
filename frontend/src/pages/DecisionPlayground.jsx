@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { getDecisions, applyDecision, getRoleAgreement } from '../state/engine.js';
+import { getDecisions } from '../state/engine.js';
+import { api } from '../api/client.js';
 
 const ROLE_COLORS = {
   ceo: '#f59e0b',
@@ -29,22 +30,29 @@ function agreementLabel(score) {
   return 'Disagrees';
 }
 
-export default function DecisionPlayground({ onStateChange }) {
+export default function DecisionPlayground({ flowId, isActive, onStateChange }) {
   const decisions = getDecisions();
   const [selectedDecision, setSelectedDecision] = useState(decisions[0].id);
   const [result, setResult] = useState(null);
+  const [applying, setApplying] = useState(false);
 
   const decision = decisions.find(d => d.id === selectedDecision);
 
-  function handleOption(optionId) {
-    const agreement = getRoleAgreement(selectedDecision, optionId);
-    const newState = applyDecision(selectedDecision, optionId);
-    setResult({
-      optionId,
-      agreement,
-      optionLabel: decision.options.find(o => o.id === optionId)?.label,
-    });
-    onStateChange({ ...newState });
+  async function handleOption(optionId) {
+    if (!isActive || applying) return;
+    setApplying(true);
+    try {
+      const option = decision.options.find(o => o.id === optionId);
+      const agreement = {};
+      Object.entries(option.role_impacts).forEach(([role, impacts]) => {
+        agreement[role] = impacts.agreement ?? 50;
+      });
+      const { state: newState } = await api.applyDecision(flowId, selectedDecision, optionId);
+      setResult({ optionId, agreement, optionLabel: option.label });
+      onStateChange(newState);
+    } finally {
+      setApplying(false);
+    }
   }
 
   function handleSelectDecision(id) {
@@ -56,7 +64,9 @@ export default function DecisionPlayground({ onStateChange }) {
     <div style={{ padding: 32, maxWidth: 960, margin: '0 auto' }}>
       <h2 style={{ marginBottom: 8 }}>🎯 Decision Playground</h2>
       <p style={{ color: '#64748b', fontSize: 14, marginBottom: 28 }}>
-        Make a decision and see how each role reacts. Impacts are applied to the company dashboard.
+        {isActive
+          ? 'Make a decision and see how each role reacts. Impacts are saved to this flow.'
+          : 'Viewing an inactive flow — decisions are read-only.'}
       </p>
 
       <div style={{ display: 'flex', gap: 8, marginBottom: 28, flexWrap: 'wrap' }}>
@@ -85,11 +95,14 @@ export default function DecisionPlayground({ onStateChange }) {
             <button
               key={opt.id}
               onClick={() => handleOption(opt.id)}
+              disabled={!isActive || applying}
               style={{
-                padding: '10px 28px', borderRadius: 8, border: 'none', cursor: 'pointer', fontSize: 14, fontWeight: 600,
+                padding: '10px 28px', borderRadius: 8, border: 'none', fontSize: 14, fontWeight: 600,
+                cursor: isActive && !applying ? 'pointer' : 'not-allowed',
                 background: result?.optionId === opt.id ? '#3b82f6' : '#0f172a',
                 color: result?.optionId === opt.id ? '#fff' : '#e2e8f0',
                 border: '1px solid ' + (result?.optionId === opt.id ? '#3b82f6' : '#475569'),
+                opacity: !isActive ? 0.5 : 1,
                 transition: 'all 0.2s',
               }}
             >

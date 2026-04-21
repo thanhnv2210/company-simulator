@@ -1,0 +1,103 @@
+{
+  "roles": [
+    {
+      "id": "ceo",
+      "name": "CEO",
+      "responsibilities": [
+        "Define company vision",
+        "Fundraising and budgeting",
+        "Hiring strategy",
+        "Business direction"
+      ],
+      "metrics": [
+        "revenue_growth",
+        "burn_rate",
+        "team_size"
+      ],
+      "daily_activities": [
+        "Review company metrics",
+        "Meet investors or partners",
+        "Align leadership team"
+      ]
+    },
+    {
+      "id": "cto",
+      "name": "CTO",
+      "responsibilities": [
+        "Define technical strategy",
+        "Manage engineering team",
+        "Ensure system scalability",
+        "Balance tech debt vs delivery"
+      ],
+      "metrics": [
+        "system_stability",
+        "deployment_frequency",
+        "tech_debt_level"
+      ],
+      "daily_activities": [
+        "Review architecture",
+        "Support engineers",
+        "Prioritize tech initiatives"
+      ]
+    },
+    {
+      "id": "engineer",
+      "name": "Software Engineer",
+      "responsibilities": [
+        "Develop features",
+        "Fix bugs",
+        "Write tests",
+        "Maintain systems"
+      ],
+      "metrics": [
+        "velocity",
+        "code_quality",
+        "bug_rate"
+      ],
+      "daily_activities": [
+        "Implement tasks",
+        "Review code",
+        "Debug issues"
+      ]
+    },
+    {
+      "id": "pm",
+      "name": "Product Manager",
+      "responsibilities": [
+        "Define product requirements",
+        "Prioritize backlog",
+        "Align stakeholders",
+        "Validate user needs"
+      ],
+      "metrics": [
+        "feature_adoption",
+        "delivery_time",
+        "user_satisfaction"
+      ],
+      "daily_activities": [
+        "Write specs",
+        "Review backlog",
+        "Coordinate teams"
+      ]
+    },
+    {
+      "id": "sales",
+      "name": "Sales",
+      "responsibilities": [
+        "Acquire customers",
+        "Close deals",
+        "Manage pipeline"
+      ],
+      "metrics": [
+        "monthly_revenue",
+        "conversion_rate",
+        "pipeline_size"
+      ],
+      "daily_activities": [
+        "Reach out to leads",
+        "Demo product",
+        "Negotiate deals"
+      ]
+    }
+  ]
+}

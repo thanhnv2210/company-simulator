@@ -40,9 +40,26 @@
 ---
 
 ## Phase 2: Enhancement
-- [ ] Add state persistence
-- [ ] Add more decision scenarios
-- [ ] Improve UI/UX
+
+### Backend (Node.js + PostgreSQL)
+- [x] Setup Express API (`backend/src/index.js`)
+- [x] PostgreSQL connection + schema migration (`flows`, `flow_decisions` tables)
+- [x] `GET /api/flows` — list all flows
+- [x] `GET /api/flows/:id` — get flow state + decision history
+- [x] `POST /api/flows/reset` — deactivate active flow, create new active flow
+- [x] `PATCH /api/flows/:id/activate` — switch active flow
+- [x] `POST /api/flows/:id/decisions` — apply decision, persist state
+
+### Frontend Updates
+- [x] API client (`frontend/src/api/client.js`)
+- [x] Flow selector component (active/inactive flows, view-only badge)
+- [x] Reset button — deactivates current flow, creates new active flow
+- [x] Decision Playground — disabled in view-only mode for inactive flows
+- [x] App.jsx — loads flows from API on mount, orchestrates flow state
+
+### Pending
+- [ ] Add more decision scenarios (in backlog)
+- [ ] Decision history log / timeline view
 
 ---
 

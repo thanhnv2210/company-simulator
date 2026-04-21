@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(npm create:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(PGPASSWORD=admin psql -h localhost -p 54320 -U admin -c \"CREATE DATABASE company_simulator;\" 2>&1)",
+      "Bash(npm run:*)",
+      "Bash(curl -s -X POST http://localhost:3001/api/flows/reset -H \"Content-Type: application/json\" -d '{\"\"\"\"name\"\"\"\":\"\"\"\"Flow 1\"\"\"\"}')",
+      "Bash(python3 -m json.tool)"
     ]
   }
 }
