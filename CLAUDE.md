@@ -11,8 +11,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 **Phase 2 is in progress.** Backend API is live, flows are persisted to PostgreSQL.
 
 - `config/` — JSON source of truth for all domain data
-- `frontend/` — React + Vite app → `cd frontend && npm run dev` (port 5173)
-- `backend/` — Node.js + Express API → `cd backend && npm start` (port 3001)
+- `frontend/` — React + Vite app → `cd frontend && npm run dev` (port 5183)
+- `backend/` — Node.js + Express API → `cd backend && npm start` (port 3010)
 - Database: PostgreSQL at `localhost:54320`, database `company_simulator`
 - To set up DB from scratch: `cd backend && npm run migrate`
 

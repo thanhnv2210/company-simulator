@@ -47,24 +47,11 @@ This project helps engineers:
 
 ## 🪶 Tech Stack & Architecture
 
-This project is designed to run instantly in GitHub Codespaces with minimal setup.
-
-### Principles
-- No heavy backend required for MVP
-- JSON-driven simulation engine
-- Frontend-first architecture
-
 ### Stack
-- Frontend: React + Vite
-- State: Local JSON + in-memory state engine
-- Data: JSON config files (roles, decisions, workflows)
-- Backend: Optional (introduced in Phase 2)
-
-### Run in Codespaces
-```bash
-npm install
-npm run dev
-```
+- Frontend: React + Vite (port 5183)
+- Backend: Node.js + Express (port 3010)
+- Database: PostgreSQL (port 54320, database `company_simulator`)
+- Data: JSON config files (`config/`) as source of truth
 
 ---
 
@@ -95,14 +82,22 @@ It’s a **thinking framework** for engineers who want to:
 ---
 
 ## ⚡ Getting Started
+
 ```bash
 # clone repo
 git clone <repo-url>
 
-# install and run
+# setup & run backend (terminal 1)
+cd backend
+npm install
+npm run migrate
+npm start
+
+# setup & run frontend (terminal 2)
 cd frontend
 npm install
 npm run dev
 ```
 
-Open http://localhost:5173
+- Frontend: http://localhost:5183
+- Backend API: http://localhost:3010
