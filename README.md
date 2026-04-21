@@ -52,6 +52,28 @@ This project helps engineers:
 
 ---
 
+## 🪶 Lightweight Architecture
+
+This project is designed to run instantly in GitHub Codespaces with minimal setup.
+
+### Principles
+- No heavy backend required for MVP
+- JSON-driven simulation engine
+- Frontend-first architecture
+
+### Stack
+- Frontend: React + Vite
+- State: Local JSON + in-memory state engine
+- Backend: Optional (introduced later)
+
+### Run in Codespaces
+```bash
+npm install
+npm run dev
+```
+
+---
+
 ## 🔮 Future (AI Integration)
 - AI-powered decision assistant
 - Role simulation (e.g. “Act as CTO”)

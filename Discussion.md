@@ -31,3 +31,19 @@ Not a simulator, but:
 - Multiplayer simulation
 - Scenario-based challenges
 - Integration with real developer workflows
+
+## 6. Why Lightweight Architecture?
+
+- Enables instant usage via GitHub Codespaces
+- Reduces setup friction
+- Focuses on logic, not infrastructure
+- Makes project easy to demo and share
+
+---
+
+## 7. When to Add Backend?
+
+Only when needed:
+- Multi-user support
+- Persistent state
+- AI integration
