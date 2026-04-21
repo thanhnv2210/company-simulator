@@ -1,0 +1,40 @@
+{
+  "workflows": [
+    {
+      "id": "product_delivery",
+      "name": "Product Delivery Lifecycle",
+      "steps": [
+        {
+          "id": "idea",
+          "name": "Idea",
+          "description": "Identify opportunity or problem",
+          "roles": ["ceo", "pm"]
+        },
+        {
+          "id": "planning",
+          "name": "Planning",
+          "description": "Define requirements and scope",
+          "roles": ["pm", "cto"]
+        },
+        {
+          "id": "development",
+          "name": "Development",
+          "description": "Build features",
+          "roles": ["engineer", "cto"]
+        },
+        {
+          "id": "release",
+          "name": "Release",
+          "description": "Deploy to production",
+          "roles": ["engineer", "cto"]
+        },
+        {
+          "id": "feedback",
+          "name": "Feedback",
+          "description": "Collect user feedback",
+          "roles": ["pm", "sales"]
+        }
+      ]
+    }
+  ]
+}
