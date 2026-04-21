@@ -33,9 +33,25 @@ function applyDecisionToState(state, decisionId, optionId) {
 router.get('/', async (req, res) => {
   try {
     const result = await pool.query(
-      'SELECT id, name, is_active, created_at, updated_at FROM flows ORDER BY created_at DESC'
+      'SELECT id, name, description, is_active, created_at, updated_at FROM flows ORDER BY created_at DESC'
     );
     res.json(result.rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// PATCH /api/flows/:id — rename and/or update description
+router.patch('/:id', async (req, res) => {
+  const { name, description } = req.body;
+  if (!name?.trim()) return res.status(400).json({ error: 'name is required' });
+  try {
+    const result = await pool.query(
+      'UPDATE flows SET name = $1, description = $2, updated_at = NOW() WHERE id = $3 RETURNING id, name, description, is_active, updated_at',
+      [name.trim(), description?.trim() ?? null, req.params.id]
+    );
+    if (result.rows.length === 0) return res.status(404).json({ error: 'Flow not found' });
+    res.json(result.rows[0]);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

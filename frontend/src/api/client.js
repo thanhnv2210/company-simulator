@@ -27,6 +27,12 @@ export const api = {
       body: JSON.stringify({ decision_id: decisionId, option_id: optionId }),
     }),
 
+  updateFlow: (id, name, description) =>
+    request(`/flows/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify({ name, description }),
+    }),
+
   // AI
   explainDecision: (flowId, decisionId, optionId, beforeState) =>
     request('/ai/explain', {

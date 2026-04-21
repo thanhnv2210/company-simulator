@@ -5,6 +5,7 @@ const TABS = [
   { id: 'decisions', label: '🎯 Decisions' },
   { id: 'history', label: '📜 History' },
   { id: 'scenarios', label: '🎬 Scenarios' },
+  { id: 'guide', label: '📖 Guide' },
 ];
 
 export default function NavBar({ current, onChange }) {

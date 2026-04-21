@@ -7,6 +7,7 @@ import WorkflowVisualizer from './pages/WorkflowVisualizer.jsx';
 import DecisionPlayground from './pages/DecisionPlayground.jsx';
 import DecisionHistory from './pages/DecisionHistory.jsx';
 import ScenarioPlayer from './pages/ScenarioPlayer.jsx';
+import Guide from './pages/Guide.jsx';
 import { api } from './api/client.js';
 
 export default function App() {
@@ -83,10 +84,12 @@ export default function App() {
         selectedId={selectedFlowId}
         onSelect={handleSelectFlow}
         onReset={handleReset}
+        onFlowUpdated={(updated) => setFlows(prev => prev.map(f => f.id === updated.id ? { ...f, ...updated } : f))}
         loading={loading}
       />
       <main>
-        {flowState && (
+        {page === 'guide' && <Guide />}
+        {flowState && page !== 'guide' && (
           <>
             {page === 'dashboard' && <Dashboard state={flowState} />}
             {page === 'roles' && <RoleExplorer />}

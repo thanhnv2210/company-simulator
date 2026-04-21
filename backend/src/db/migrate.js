@@ -3,13 +3,16 @@ const pool = require('./index');
 async function migrate() {
   await pool.query(`
     CREATE TABLE IF NOT EXISTS flows (
-      id        SERIAL PRIMARY KEY,
-      name      VARCHAR(100) NOT NULL,
-      is_active BOOLEAN NOT NULL DEFAULT true,
-      state     JSONB NOT NULL,
-      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+      id          SERIAL PRIMARY KEY,
+      name        VARCHAR(100) NOT NULL,
+      description TEXT,
+      is_active   BOOLEAN NOT NULL DEFAULT true,
+      state       JSONB NOT NULL,
+      created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
     );
+
+    ALTER TABLE flows ADD COLUMN IF NOT EXISTS description TEXT;
 
     CREATE TABLE IF NOT EXISTS flow_decisions (
       id          SERIAL PRIMARY KEY,
