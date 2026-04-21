@@ -9,7 +9,14 @@ function buildDefaultState() {
   return JSON.parse(JSON.stringify(defaultState));
 }
 
-function applyDecisionToState(state, decisionId, optionId) {
+// Each scenario step = 1 quarter (3 months) from the flow's start date
+function stepTimestamp(flowCreatedAt, stepIndex) {
+  const start = new Date(flowCreatedAt);
+  start.setMonth(start.getMonth() + stepIndex * 3);
+  return start;
+}
+
+function applyDecisionToState(state, decisionId, optionId, timestamp) {
   const decision = decisionsData.decisions.find(d => d.id === decisionId);
   if (!decision) return state;
   const option = decision.options.find(o => o.id === optionId);
@@ -24,7 +31,7 @@ function applyDecisionToState(state, decisionId, optionId) {
       }
     });
   });
-  newState.timestamp = new Date().toISOString();
+  newState.timestamp = timestamp.toISOString();
   return newState;
 }
 
@@ -97,16 +104,17 @@ router.post('/:id/step', async (req, res) => {
     if (flowResult.rows.length === 0) return res.status(404).json({ error: 'Flow not found' });
 
     const flow = flowResult.rows[0];
-    const newState = applyDecisionToState(flow.state, step.decision_id, step.option_id);
+    const appliedAt = stepTimestamp(flow.created_at, step_index);
+    const newState = applyDecisionToState(flow.state, step.decision_id, step.option_id, appliedAt);
 
     await client.query('BEGIN');
     await client.query(
-      'UPDATE flows SET state = $1, updated_at = NOW() WHERE id = $2',
-      [JSON.stringify(newState), flow_id]
+      'UPDATE flows SET state = $1, updated_at = $2 WHERE id = $3',
+      [JSON.stringify(newState), appliedAt, flow_id]
     );
     await client.query(
-      'INSERT INTO flow_decisions (flow_id, decision_id, option_id, role_impacts) VALUES ($1, $2, $3, $4)',
-      [flow_id, step.decision_id, step.option_id, JSON.stringify(option.role_impacts)]
+      'INSERT INTO flow_decisions (flow_id, decision_id, option_id, role_impacts, applied_at) VALUES ($1, $2, $3, $4, $5)',
+      [flow_id, step.decision_id, step.option_id, JSON.stringify(option.role_impacts), appliedAt]
     );
     await client.query('COMMIT');
 

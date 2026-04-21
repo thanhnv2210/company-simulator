@@ -144,5 +144,150 @@
         }
       ]
     }
+    ,
+    {
+      "id": "responsible_ai_builder",
+      "title": "The Responsible AI Builder",
+      "outcome": "positive",
+      "description": "An AI startup that bets on reliability over hype. While competitors race to demo, this team builds trust with enterprise buyers — and trust closes the deals that matter.",
+      "steps": [
+        {
+          "quarter": "Year 1 — Q1",
+          "decision_id": "build_feature_vs_fix_bug",
+          "option_id": "bugfix",
+          "title": "Fix Hallucinations Before Shipping",
+          "context": "The AI model is producing inconsistent outputs. Instead of launching, the team spends the quarter on output quality, evaluation frameworks, and guardrails.",
+          "market_impact": "AI hallucinations are a career-ending risk for enterprise buyers. One wrong AI output in a legal or financial workflow can trigger lawsuits. Fixing this now costs one quarter. Fixing it after a public incident costs the company."
+        },
+        {
+          "quarter": "Year 1 — Q2",
+          "decision_id": "hire_engineer",
+          "option_id": "yes",
+          "title": "Hire an ML Engineer",
+          "context": "The founding team is strong on product but thin on model infrastructure. A specialist hire builds the evaluation pipeline and fine-tuning workflow.",
+          "market_impact": "AI model quality compounds with investment. A dedicated ML engineer reduces hallucination rate by 60% in 90 days. This becomes a defensible moat — competitors using off-the-shelf prompts can't replicate it easily."
+        },
+        {
+          "quarter": "Year 1 — Q3",
+          "decision_id": "release_speed",
+          "option_id": "stable",
+          "title": "Release Carefully with Guardrails",
+          "context": "The team launches to a closed beta with strict monitoring, rate limits, and human-in-the-loop review for high-stakes outputs.",
+          "market_impact": "The EU AI Act and emerging US AI regulation require demonstrable risk controls for enterprise AI deployments. Responsible release practices now become compliance checkboxes later — and compliance is what unlocks regulated industries like finance and healthcare."
+        },
+        {
+          "quarter": "Year 1 — Q4",
+          "decision_id": "technical_debt",
+          "option_id": "invest",
+          "title": "Build MLOps Infrastructure",
+          "context": "Invest in model versioning, prompt management, cost monitoring, and automated evaluation before scaling usage.",
+          "market_impact": "LLM API costs can spiral 10x without observability. Companies that ignored MLOps early burned their runway on inference costs alone. This investment also enables rapid model swaps when better foundation models drop — a critical competitive advantage in a fast-moving market."
+        },
+        {
+          "quarter": "Year 2 — Q1",
+          "decision_id": "hire_engineer",
+          "option_id": "yes",
+          "title": "Hire a Second Engineer",
+          "context": "With infrastructure solid and early customers validating the product, the team scales engineering capacity to accelerate feature development.",
+          "market_impact": "The AI application layer is still wide open — foundation model providers like OpenAI and Anthropic are not direct competitors here, they are suppliers. The window to establish a category position is 12-18 months before incumbents build equivalent features into their platforms."
+        },
+        {
+          "quarter": "Year 2 — Q2",
+          "decision_id": "build_feature_vs_fix_bug",
+          "option_id": "feature",
+          "title": "Launch Flagship AI Feature",
+          "context": "On a reliable, well-monitored foundation, the team ships the flagship AI capability with confidence in its accuracy and cost profile.",
+          "market_impact": "Enterprise demos that actually work close deals. The market is full of AI products that impress in demos and fail in production. This team's reliability record becomes the sales pitch — early customers become references, and references drive inbound."
+        },
+        {
+          "quarter": "Year 2 — Q3",
+          "decision_id": "hire_sales",
+          "option_id": "yes",
+          "title": "Hire Enterprise Sales",
+          "context": "Product-market fit is confirmed. The team hires a sales person experienced in enterprise AI deals — long cycles, procurement, security reviews.",
+          "market_impact": "Enterprise AI deals take 3-9 months to close but are worth 10-50x SMB contracts. One reference from a Fortune 500 customer changes the entire sales motion. The timing is right — reliable AI is rare, and buyers are actively looking."
+        },
+        {
+          "quarter": "Year 2 — Q4",
+          "decision_id": "release_speed",
+          "option_id": "stable",
+          "title": "Maintain Quality as You Scale",
+          "context": "As user volume grows, the team resists pressure to cut QA corners. Every release goes through automated evaluation before shipping.",
+          "market_impact": "Series A investors in AI specifically look for low hallucination rates, clear evals, and cost per query metrics — not just revenue growth. This team's disciplined release culture becomes a fundraising asset. Series A closes at a premium valuation."
+        }
+      ]
+    },
+    {
+      "id": "ai_hype_machine",
+      "title": "The AI Hype Machine",
+      "outcome": "negative",
+      "description": "An AI startup that prioritises demo magic over product reality. Viral launches and bold claims attract early attention — but enterprise buyers do due diligence, and the cracks appear fast.",
+      "steps": [
+        {
+          "quarter": "Year 1 — Q1",
+          "decision_id": "build_feature_vs_fix_bug",
+          "option_id": "feature",
+          "title": "Ship the AI Demo Fast",
+          "context": "The team wraps a GPT API call in a polished UI and launches publicly before validating output quality or reliability.",
+          "market_impact": "The launch goes viral on X (Twitter). 10,000 signups in 48 hours. The team celebrates. But 80% of users try it once, hit a hallucination or a slow response, and never return. Vanity metrics are not business metrics."
+        },
+        {
+          "quarter": "Year 1 — Q2",
+          "decision_id": "release_speed",
+          "option_id": "fast",
+          "title": "Keep Shipping to Stay Relevant",
+          "context": "The team releases new AI features weekly to maintain social media momentum, with no evaluation framework in place.",
+          "market_impact": "Each rushed release adds a new failure mode. A widely shared screenshot of a harmful AI output causes a PR incident. The team spends a week on damage control instead of product. In AI, one public failure undoes months of goodwill."
+        },
+        {
+          "quarter": "Year 1 — Q3",
+          "decision_id": "hire_sales",
+          "option_id": "yes",
+          "title": "Hire Sales to Chase Enterprise",
+          "context": "Riding the hype wave, the team hires a sales person and targets enterprise deals — before the product has passed any security or compliance review.",
+          "market_impact": "Enterprise AI procurement now includes mandatory security assessments, data residency reviews, and AI policy compliance. The product fails every review. Sales pipeline fills but nothing closes. The sales person quits after 3 months with zero deals."
+        },
+        {
+          "quarter": "Year 1 — Q4",
+          "decision_id": "technical_debt",
+          "option_id": "ignore",
+          "title": "Ignore Model Infrastructure Debt",
+          "context": "LLM API costs are ballooning but the team avoids the hard work of building cost monitoring or evaluation pipelines. Ship first, optimise later.",
+          "market_impact": "Monthly inference costs hit $40k with $15k MRR. The unit economics are broken. Without observability, the team has no idea which features are driving costs or which queries are producing bad outputs. Investors notice the burn pattern and start asking questions."
+        },
+        {
+          "quarter": "Year 2 — Q1",
+          "decision_id": "build_feature_vs_fix_bug",
+          "option_id": "feature",
+          "title": "Launch an AI Agent Feature",
+          "context": "Chasing the next trend, the team ships an autonomous AI agent feature without solving the underlying reliability issues.",
+          "market_impact": "The agent makes unsupervised decisions that several users find harmful. A tech journalist writes a critical piece. The story gets picked up. Enterprise prospects that were evaluating the product quietly disappear. Agentic AI without guardrails is the fastest way to lose enterprise trust permanently."
+        },
+        {
+          "quarter": "Year 2 — Q2",
+          "decision_id": "release_speed",
+          "option_id": "fast",
+          "title": "Rush Fixes to Recover Trust",
+          "context": "Under pressure to recover from the agent incident, the team ships patches fast without proper testing.",
+          "market_impact": "Three patches in two weeks each introduce new bugs. Power users, who defended the product publicly, give up and switch to a competitor. Losing advocates is worse than losing customers — advocates are free marketing and referrals."
+        },
+        {
+          "quarter": "Year 2 — Q3",
+          "decision_id": "hire_engineer",
+          "option_id": "yes",
+          "title": "Emergency Hire to Fix AI Quality",
+          "context": "The team finally acknowledges the reliability problem and hires an ML engineer — 18 months too late.",
+          "market_impact": "The ML engineer's first assessment: the model evaluation gap is 6 months of work. The codebase has no versioning, no evals, no cost tracking. Fixing it properly means slowing all feature work. Morale collapses as the founding team realises the technical decisions of Year 1 are now the ceiling."
+        },
+        {
+          "quarter": "Year 2 — Q4",
+          "decision_id": "technical_debt",
+          "option_id": "ignore",
+          "title": "Give Up on Quality to Survive",
+          "context": "With runway under 3 months, the board pushes for any revenue. Quality work is paused to chase any deal that might close.",
+          "market_impact": "Desperation is visible to buyers. Discounts destroy pricing integrity. The team that launched with viral energy is now offering 80% discounts to close a $500/month deal. A competitor with a reliable product closes the enterprise contract you had been pursuing for 9 months. Acqui-hire conversations begin."
+        }
+      ]
+    }
   ]
 }
