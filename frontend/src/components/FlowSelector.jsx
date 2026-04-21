@@ -10,12 +10,19 @@ export default function FlowSelector({ flows, selectedId, onSelect, onReset, onF
   const [editing, setEditing] = useState(false);
   const [editName, setEditName] = useState('');
   const [editDesc, setEditDesc] = useState('');
+  const [editWorkflowId, setEditWorkflowId] = useState('');
+  const [workflows, setWorkflows] = useState([]);
   const [saving, setSaving] = useState(false);
+
+  useEffect(() => {
+    api.listWorkflows().then(setWorkflows).catch(() => {});
+  }, []);
 
   useEffect(() => {
     if (selectedFlow) {
       setEditName(selectedFlow.name ?? '');
       setEditDesc(selectedFlow.description ?? '');
+      setEditWorkflowId(selectedFlow.workflow_id ?? 'product_delivery');
     }
     setEditing(false);
   }, [selectedId]);
@@ -24,7 +31,7 @@ export default function FlowSelector({ flows, selectedId, onSelect, onReset, onF
     if (!editName.trim() || saving) return;
     setSaving(true);
     try {
-      const updated = await api.updateFlow(selectedId, editName.trim(), editDesc.trim());
+      const updated = await api.updateFlow(selectedId, editName.trim(), editDesc.trim(), editWorkflowId);
       onFlowUpdated(updated);
       setEditing(false);
     } finally {
@@ -35,8 +42,11 @@ export default function FlowSelector({ flows, selectedId, onSelect, onReset, onF
   function handleCancel() {
     setEditName(selectedFlow?.name ?? '');
     setEditDesc(selectedFlow?.description ?? '');
+    setEditWorkflowId(selectedFlow?.workflow_id ?? 'product_delivery');
     setEditing(false);
   }
+
+  const linkedWorkflow = workflows.find(w => w.id === selectedFlow?.workflow_id);
 
   return (
     <div style={{ background: '#0f172a', borderBottom: '1px solid #1e293b' }}>
@@ -76,6 +86,12 @@ export default function FlowSelector({ flows, selectedId, onSelect, onReset, onF
             border: '1px solid #f59e0b', borderRadius: 4, padding: '2px 8px',
           }}>
             View only
+          </span>
+        )}
+
+        {linkedWorkflow && !editing && (
+          <span style={{ fontSize: 12, color: '#475569' }}>
+            Workflow: <span style={{ color: '#94a3b8' }}>{linkedWorkflow.name}</span>
           </span>
         )}
 
@@ -126,7 +142,7 @@ export default function FlowSelector({ flows, selectedId, onSelect, onReset, onF
               placeholder="Flow name"
               style={{
                 background: '#1e293b', border: '1px solid #334155', borderRadius: 6,
-                color: '#e2e8f0', padding: '6px 12px', fontSize: 14, width: 260,
+                color: '#e2e8f0', padding: '6px 12px', fontSize: 14, width: 220,
               }}
             />
             <input
@@ -135,9 +151,21 @@ export default function FlowSelector({ flows, selectedId, onSelect, onReset, onF
               placeholder="Add a description (optional)"
               style={{
                 background: '#1e293b', border: '1px solid #334155', borderRadius: 6,
-                color: '#e2e8f0', padding: '6px 12px', fontSize: 14, flex: 1, minWidth: 200,
+                color: '#e2e8f0', padding: '6px 12px', fontSize: 14, flex: 1, minWidth: 180,
               }}
             />
+            <select
+              value={editWorkflowId}
+              onChange={e => setEditWorkflowId(e.target.value)}
+              style={{
+                background: '#1e293b', border: '1px solid #334155', borderRadius: 6,
+                color: '#e2e8f0', padding: '6px 10px', fontSize: 13, cursor: 'pointer',
+              }}
+            >
+              {workflows.map(w => (
+                <option key={w.id} value={w.id}>{w.name}</option>
+              ))}
+            </select>
             <button
               onClick={handleSave}
               disabled={saving || !editName.trim()}

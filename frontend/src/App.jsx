@@ -93,7 +93,7 @@ export default function App() {
           <>
             {page === 'dashboard' && <Dashboard state={flowState} />}
             {page === 'roles' && <RoleExplorer />}
-            {page === 'workflow' && <WorkflowVisualizer />}
+            {page === 'workflow' && <WorkflowVisualizer workflowId={selectedFlow?.workflow_id} />}
             {page === 'decisions' && (
               <DecisionPlayground
                 flowId={selectedFlowId}

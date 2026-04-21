@@ -27,11 +27,14 @@ export const api = {
       body: JSON.stringify({ decision_id: decisionId, option_id: optionId }),
     }),
 
-  updateFlow: (id, name, description) =>
+  updateFlow: (id, name, description, workflowId) =>
     request(`/flows/${id}`, {
       method: 'PATCH',
-      body: JSON.stringify({ name, description }),
+      body: JSON.stringify({ name, description, workflow_id: workflowId }),
     }),
+
+  // Workflows
+  listWorkflows: () => request('/workflows'),
 
   // AI
   explainDecision: (flowId, decisionId, optionId, beforeState) =>

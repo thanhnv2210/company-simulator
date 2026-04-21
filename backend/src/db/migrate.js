@@ -13,6 +13,7 @@ async function migrate() {
     );
 
     ALTER TABLE flows ADD COLUMN IF NOT EXISTS description TEXT;
+    ALTER TABLE flows ADD COLUMN IF NOT EXISTS workflow_id VARCHAR(100) NOT NULL DEFAULT 'product_delivery';
 
     CREATE TABLE IF NOT EXISTS flow_decisions (
       id          SERIAL PRIMARY KEY,

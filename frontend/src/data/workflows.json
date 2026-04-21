@@ -3,6 +3,7 @@
     {
       "id": "product_delivery",
       "name": "Product Delivery Lifecycle",
+      "description": "End-to-end flow from idea to user feedback. Suited for small teams (<15 people) focused on building and shipping.",
       "steps": [
         {
           "id": "idea",
@@ -33,6 +34,55 @@
           "name": "Feedback",
           "description": "Collect user feedback",
           "roles": ["pm", "sales"]
+        }
+      ]
+    },
+    {
+      "id": "company_reorg_30",
+      "name": "Company Reorganisation (30 Staff)",
+      "description": "Structural redesign for a 30-person company. Applies when the team has grown beyond the founding structure and roles, reporting lines, and accountability need to be redefined.",
+      "steps": [
+        {
+          "id": "assessment",
+          "name": "Assessment",
+          "description": "Audit current teams, identify bottlenecks, skill gaps, and reporting issues across all 30 staff",
+          "roles": ["ceo", "cto"]
+        },
+        {
+          "id": "structure_design",
+          "name": "Structure Design",
+          "description": "Design the new org chart — define teams, reporting lines, and role responsibilities at scale",
+          "roles": ["ceo", "cto", "pm"]
+        },
+        {
+          "id": "communication",
+          "name": "Communication",
+          "description": "Announce the reorg to all staff — explain the why, the timeline, and what changes for each team",
+          "roles": ["ceo"]
+        },
+        {
+          "id": "role_transition",
+          "name": "Role Transition",
+          "description": "Move people into new roles, rebalance teams, and manage departures if needed",
+          "roles": ["ceo", "cto", "pm"]
+        },
+        {
+          "id": "process_alignment",
+          "name": "Process Alignment",
+          "description": "Update workflows, tooling, and rituals to match the new structure — standups, reviews, OKRs",
+          "roles": ["cto", "pm", "engineer"]
+        },
+        {
+          "id": "revenue_continuity",
+          "name": "Revenue Continuity",
+          "description": "Ensure sales pipeline and customer relationships are unaffected during the transition",
+          "roles": ["ceo", "sales"]
+        },
+        {
+          "id": "stabilisation",
+          "name": "Stabilisation",
+          "description": "Measure team velocity, morale, and delivery quality under the new structure — course correct as needed",
+          "roles": ["cto", "engineer", "pm"]
         }
       ]
     }
