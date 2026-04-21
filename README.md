@@ -45,14 +45,7 @@ This project helps engineers:
 
 ---
 
-## 🧱 Tech Stack (Initial)
-- Backend: Spring Boot / Node.js (TBD)
-- Frontend: React (minimal UI)
-- Data: JSON-driven (no heavy DB initially)
-
----
-
-## 🪶 Lightweight Architecture
+## 🪶 Tech Stack & Architecture
 
 This project is designed to run instantly in GitHub Codespaces with minimal setup.
 
@@ -64,7 +57,8 @@ This project is designed to run instantly in GitHub Codespaces with minimal setu
 ### Stack
 - Frontend: React + Vite
 - State: Local JSON + in-memory state engine
-- Backend: Optional (introduced later)
+- Data: JSON config files (roles, decisions, workflows)
+- Backend: Optional (introduced in Phase 2)
 
 ### Run in Codespaces
 ```bash

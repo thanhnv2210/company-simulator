@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Current State
 
-This repository is in the **planning/design phase**. No implementation exists yet — only documentation and architectural decisions. The tech stack (Spring Boot or Node.js backend, React frontend) is still TBD.
+This repository is in the **planning/design phase**. No implementation exists yet — only documentation, architectural decisions, and JSON config files in `config/`.
 
 ## Architecture
 
@@ -26,9 +26,15 @@ All domain data (roles, workflows, decisions) lives in JSON config files — no 
 User → Select Role/Decision → Load JSON config → Apply rules → Return updated state
 ```
 
+### Tech Stack (ADR-002)
+- **Frontend**: React + Vite
+- **State**: In-memory state engine (no backend for MVP)
+- **Data**: JSON config files in `config/`
+- **Backend**: Optional, introduced in Phase 2
+
 ### Development Phases
-1. **Phase 1 (MVP)**: Non-AI, static + rule-based simulation — JSON data, React frontend, REST backend
-2. **Phase 2**: State persistence, expanded decision scenarios
+1. **Phase 1 (MVP)**: Non-AI, frontend-only — React + Vite, JSON-driven, in-memory state
+2. **Phase 2**: State persistence, backend introduced, expanded decision scenarios
 3. **Phase 3**: AI-powered decision assistant, role simulation ("Act as CTO"), personalized recommendations
 
 ## Key Constraints (PDR-001)
