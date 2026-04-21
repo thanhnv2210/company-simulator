@@ -59,7 +59,7 @@
 
 ### Pending
 - [ ] Add more decision scenarios (in backlog)
-- [ ] Decision history log / timeline view
+- [x] Decision history log / timeline view (`frontend/src/pages/DecisionHistory.jsx`)
 
 ---
 

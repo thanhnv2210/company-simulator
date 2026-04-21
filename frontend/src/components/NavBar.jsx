@@ -3,6 +3,7 @@ const TABS = [
   { id: 'roles', label: '👤 Roles' },
   { id: 'workflow', label: '🔄 Workflow' },
   { id: 'decisions', label: '🎯 Decisions' },
+  { id: 'history', label: '📜 History' },
 ];
 
 export default function NavBar({ current, onChange }) {

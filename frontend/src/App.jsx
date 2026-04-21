@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard.jsx';
 import RoleExplorer from './pages/RoleExplorer.jsx';
 import WorkflowVisualizer from './pages/WorkflowVisualizer.jsx';
 import DecisionPlayground from './pages/DecisionPlayground.jsx';
+import DecisionHistory from './pages/DecisionHistory.jsx';
 import { api } from './api/client.js';
 
 export default function App() {
@@ -93,8 +94,13 @@ export default function App() {
               <DecisionPlayground
                 flowId={selectedFlowId}
                 isActive={isActive}
-                onStateChange={setFlowState}
+                onStateChange={(newState) => {
+                  setFlowState(newState);
+                }}
               />
+            )}
+            {page === 'history' && (
+              <DecisionHistory flowId={selectedFlowId} />
             )}
           </>
         )}

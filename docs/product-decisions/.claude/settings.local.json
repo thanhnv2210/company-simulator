@@ -8,7 +8,9 @@
       "Bash(curl -s -X POST http://localhost:3001/api/flows/reset -H \"Content-Type: application/json\" -d '{\"\"\"\"name\"\"\"\":\"\"\"\"Flow 1\"\"\"\"}')",
       "Bash(python3 -m json.tool)",
       "Bash(pkill -f \"node src/index.js\")",
-      "Bash(pkill -f \"vite\")"
+      "Bash(pkill -f \"vite\")",
+      "Bash(curl -s http://localhost:5183)",
+      "Bash(curl -s http://localhost:3010/api/health)"
     ]
   }
 }
